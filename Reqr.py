@@ -9,7 +9,6 @@ Peter Muller
 """
 
 from requests import head, ConnectionError
-
 from ISConfig import ISConfig
 
 __author__ = 'Peter Muller'

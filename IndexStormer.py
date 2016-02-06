@@ -10,9 +10,7 @@ Peter Muller
 
 from time import sleep
 from thread import start_new_thread
-
 from brute import brute
-
 from Reqr import Reqr
 
 __author__ = 'Peter Muller'

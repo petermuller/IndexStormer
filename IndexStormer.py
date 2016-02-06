@@ -28,8 +28,8 @@ def main():
     # Make a dictionary of things that are interesting
     hits = {}
 
-    for comb in brute(length=10):
-        r = requests.get(isc.url + comb, headers=isc.headers)
+    for comb in brute(length=5, ramp=False, letters=True, symbols=False, spaces=False):
+        r = requests.head(isc.url + comb, headers=isc.headers)
         if not (r.status_code == 404 or r.status_code == 502):
             #only record combination string and response code for space
             hits[comb] = r.status_code

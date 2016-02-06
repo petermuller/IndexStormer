@@ -19,6 +19,9 @@ Some preset values are available in Reqr.py, but to use this in different settin
 can pass arguments into the Reqr constructor to change the URL or delay time between new request threads. Use the
 'url' and 'delay' args in Reqr to set these.
 
+By default the script will ramp from 1 character to the number of characters in the length parameter specified in the
+brute call. To instead do one set of characters at a time, change ramp to False and length to your desired string length.
+
 Running
 -------
 This script can be run by simply running

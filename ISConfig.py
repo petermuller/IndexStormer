@@ -5,6 +5,7 @@ Holds configuration settings for the program
 
 Peter Muller
 """
+
 __author__ = 'Peter Muller'
 
 class ISConfig:

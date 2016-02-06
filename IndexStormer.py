@@ -8,12 +8,12 @@ Made for the Week 2 SPARSA Challenge
 Peter Muller
 """
 
-import requests
 from time import sleep
+from thread import start_new_thread
 
 from brute import brute
 
-import ISConfig
+from Reqr import Reqr
 
 __author__ = 'Peter Muller'
 
@@ -22,22 +22,15 @@ def main():
     Main program driver; AKA break the things
     :return:
     """
-
-    # Parameters determining where to send requests
-    isc = ISConfig.ISConfig()
-    # Make a dictionary of things that are interesting
-    hits = {}
-
-    for comb in brute(length=5, ramp=False, letters=True, symbols=False, spaces=False):
-        r = requests.head(isc.url + comb, headers=isc.headers)
-        if not (r.status_code == 404 or r.status_code == 502):
-            #only record combination string and response code for space
-            hits[comb] = r.status_code
-            print(comb + ": " + str(r.status_code))
-        sleep(isc.delay)
-    print(hits)
-
-
+    reqr = Reqr(0.01) #Make requests with a 0.01 second delay
+    try:
+        for comb in brute(length=8, ramp=True, letters=True, symbols=False, spaces=False):
+            start_new_thread(reqr.makeReq,(comb,)) #Spawn new thread for each request
+            sleep(reqr.isc.delay) #Rate limiting
+        print(reqr.hits) #if this ever finishes, print the dictionary
+    except:
+        #Should only happen on keyboard interrupts or failures
+        print(reqr.hits) #emergency dictionary dump
 
 if __name__ == "__main__":
     #If file is run as a program, run the main function

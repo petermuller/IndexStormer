@@ -1,2 +1,25 @@
 # IndexStormer
 SPARSA Challenge #2: Create a program similar to DirBuster to find hidden directories and files.
+
+Requirements
+------------
+This script requires the following packages, which may or may not be included with your Python:
+- python 2.7.x
+- requests
+- brute
+If you don't have them, try using
+    'pip install requests' 
+or
+    'pip install brute'
+to install them.
+
+Configuration
+-------------
+Some preset values are available in Reqr.py, but to use this in different settings, or with a different server, you
+can pass arguments into the Reqr constructor to change the URL or delay time between new request threads. Use the
+'url' and 'delay' args in Reqr to set these.
+
+Running
+-------
+This script can be run by simply running
+    python IndexStormer.py

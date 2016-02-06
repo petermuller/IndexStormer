@@ -25,9 +25,8 @@ class ISConfig:
         """
         self.url = url
         self.delay = delay
-        self.headers = {}
-        self.headers["user-agent"] = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36"
-
+        self.headers=\
+            {"user-agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36"}
 
     def __str__(self):
         """

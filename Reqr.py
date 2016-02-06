@@ -19,6 +19,7 @@ class Reqr:
     """
 
     def __init__(self,
+                 url="http://ctf.arch-cloud.com/",
                  delay=0
                  ):
         """
@@ -28,8 +29,8 @@ class Reqr:
         :param delay: Amount of time in seconds to wait between reqs
         :return:
         """
-        self.hits = {} #persistent memory for storing interesting data
-        self.isc = ISConfig(delay=delay)
+        self.hits = {}  # persistent memory for storing interesting data
+        self.isc = ISConfig(url=url, delay=delay)
 
     def makeReq(self,comb):
         """
@@ -39,10 +40,10 @@ class Reqr:
         """
         try:
             # make a head request to save space
-            resp = head(self.isc.url + comb, headers=self.isc.headers)
+            resp = head(self.isc.url + str(comb), headers=self.isc.headers)
             if resp.status_code not in [400, 404, 502]:
-                #if interesting response code, record it
+                # if interesting response code, record it
                 self.hits[comb] = resp.status_code
                 print(comb + " " + str(self.hits[comb]))
         except ConnectionError as err:
-            print(err) # Error "handling"
+            print(err)  # Error "handling"

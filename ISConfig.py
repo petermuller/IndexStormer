@@ -19,7 +19,7 @@ class ISConfig:
         """
 
         :param url: The address to attack
-        :param delay: The delay in ms to wait between requests
+        :param delay: The delay in seconds to wait between requests
         :return:
         """
         self.url = url

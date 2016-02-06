@@ -41,7 +41,7 @@ class Reqr:
         try:
             # make a head request to save space
             resp = head(self.isc.url + comb, headers=self.isc.headers)
-            if not (resp.status_code == 404 or resp.status_code == 502):
+            if resp.status_code not in [400, 404, 502]:
                 #if interesting response code, record it
                 self.hits[comb] = resp.status_code
                 print(comb + " " + str(self.hits[comb]))

@@ -22,9 +22,9 @@ def main():
     Main program driver; AKA break the things
     :return:
     """
-    reqr = Reqr(0.01) #Make requests with a 0.01 second delay
+    reqr = Reqr(0.05) #Make requests with a 50 ms delay
     try:
-        for comb in brute(length=8, ramp=True, letters=True, symbols=False, spaces=False):
+        for comb in brute(length=10, ramp=True, letters=True, numbers=True, symbols=True, spaces=False):
             start_new_thread(reqr.makeReq,(comb,)) #Spawn new thread for each request
             sleep(reqr.isc.delay) #Rate limiting
         print(reqr.hits) #if this ever finishes, print the dictionary

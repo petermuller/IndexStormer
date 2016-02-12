@@ -21,8 +21,15 @@ def main():
     :return:
     """
     reqr = Reqr(delay=0.05) # Make requests with a 50 ms delay
+    unwanted = ['#','?']
     try:
-        for comb in brute(length=10, ramp=True, letters=True, numbers=True, symbols=True, spaces=False):
+        for comb in brute(length=7, ramp=False, letters=True, numbers=True, symbols=True, spaces=False):
+            skip = False
+            for char in unwanted:
+                if char in comb:
+                    skip = True
+            if skip:
+                continue
             start_new_thread(reqr.makeReq,(comb,)) # Spawn new thread for each request
             sleep(reqr.isc.delay) # Rate limiting
         print(reqr.hits) # if this ever finishes, print the dictionary
